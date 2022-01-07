@@ -1,4 +1,6 @@
-# Ansible Role: Homebrew
+# Ansible Role: Homebrew (MOVED)
+
+**MOVED**: This role has been moved into the `geerlingguy.mac` collection. Please see [this issue](https://github.com/geerlingguy/ansible-role-homebrew/issues/166) for a migration guide and more information.
 
 [![MIT licensed][badge-license]][link-license]
 [![Galaxy Role][badge-role]][link-galaxy]
@@ -19,7 +21,7 @@ Available variables are listed below, along with default values (see [`defaults/
 
 The GitHub repository for Homebrew core.
 
-    homebrew_prefix: /usr/local
+    homebrew_prefix: "{{ (ansible_machine == 'arm64') | ternary('/opt/homebrew', '/usr/local') }}"
     homebrew_install_path: "{{ homebrew_prefix }}/Homebrew"
 
 The path where Homebrew will be installed (`homebrew_prefix` is the parent directory). It is recommended you stick to the default, otherwise Homebrew might have some weird issues. If you change this variable, you should also manually create a symlink back to /usr/local so things work as Homebrew expects.
