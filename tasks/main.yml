@@ -19,8 +19,8 @@
     owner: root
     state: directory
   become: true
-  when: "ansible_distribution_version is version('10.13', '>=')" and
-        "ansible_distribution_version is version('12.0', '<')"
+  when: ansible_distribution_version is version('10.13', '>=') and
+        ansible_distribution_version is version('12.0', '<')
 
 - name: Ensure Homebrew parent directory has correct permissions (MacOS < 10.13).
   file:
